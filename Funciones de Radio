@@ -1,0 +1,28 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <iostream>
+#include <math.h>
+using namespace std;
+float vol_cilindro(float r, float a);
+
+int main()
+{float radio, altura, volumen;
+    cout<<"Ingrese el radio: ";
+        cin>>radio;
+    cout<<"Ingrese la altura: ";
+        cin>>altura;
+    volumen=vol_cilindro(radio, altura); 
+    cout<<"El volumen es: "<<volumen;
+        return 0;
+}
+
+float vol_cilindro (float r, float a){
+    float v= 3.1416*r*r*a;
+    return v;
+}
