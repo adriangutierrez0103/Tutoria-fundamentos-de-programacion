@@ -1,0 +1,41 @@
+/******************************************************************************
+
+ 
+
+*******************************************************************************/
+#include <iostream>
+using namespace std;
+int main()
+{ int dias, numtotal=0, mayor, menor, cantidad, diamayor, diamenor;
+float S=0;
+do{
+cout<<"Ingrese el numero de dias: "<<endl;
+cin>>dias;
+
+}while(dias<=0);
+cout<<"ingrese la cantidad de productos: "<<endl;
+cin>>cantidad;
+mayor=cantidad;
+menor=cantidad;
+S=cantidad;
+diamayor=1;
+diamenor=1;
+for (int i=2; i<=dias; i++){
+    cout<<"ingrese la cantidad de productos fabricados. Dia: "<<endl;
+    cin>>cantidad;
+    if(mayor<cantidad){
+        mayor=cantidad;
+        diamayor=i;
+    }
+    if(menor>cantidad){
+        menor=cantidad;
+        diamenor=i;
+    }
+    S=S+cantidad;
+}
+cout<<"El numero total de productos: "<<S<<endl;
+cout<<"El dia con mayor produccion: "<<mayor<<"en el dia "<<diamayor<<endl;
+cout<<"El dia con menor produccion: "<<menor<<"en el dia "<<diamenor<<endl;
+cout<<"El promedio: "<<S/dias<<endl;
+    return 0;
+}
