@@ -1,0 +1,58 @@
+#include <iostream>
+using namespace std;
+
+const int nclientes = 100;
+
+double calcularDescuento(double compras) {
+    if (compras > 0 && compras <= 100) {
+        return 0;
+    } else if (compras <= 500) {
+        return compras * 0.035;
+    } else if (compras <= 1000) {
+        return compras * 0.085;
+    } else {
+        return compras * 0.12;
+    }
+}
+
+void procesarCompra(double compras[], double descuentos[], int& contador, double& totalVentas, double& totalDescuentos) {
+    double montoCompra;
+    cin >> montoCompra;
+    compras[contador] = montoCompra;
+    double descuento = calcularDescuento(montoCompra);
+    descuentos[contador] = descuento;
+    totalVentas += montoCompra;
+    totalDescuentos += descuento;
+    cout << "Descuento aplicado: " << descuento << endl;
+    contador++;
+}
+
+void mostrarResultados(double compras[], double descuentos[], int contador, double totalVentas, double totalDescuentos) {
+    cout << "\n--- Resumen de ventas ---" << endl;
+    cout << "El total de ventas es de: " << totalVentas << endl;
+    cout << "El total de descuentos es de: " << totalDescuentos << endl;
+    for (int i = 0; i < contador; i++) {
+        cout << "Cliente " << i + 1 << ": Compra = " << compras[i]
+             << ", Descuento = " << descuentos[i] << endl;
+    }
+}
+
+int main() {
+    double compras[nclientes];
+    double descuentos[nclientes];
+    double totalVentas = 0;
+    double totalDescuentos = 0;
+    int contador = 0;
+    char respuesta;
+    do {
+        if (contador >= nclientes) {
+            cout << "Se sobrepasó el límite de clientes." << endl;
+            break;
+        }
+        procesarCompra(compras, descuentos, contador, totalVentas, totalDescuentos);
+        cout << "¿Tienes más clientes? (s/n): ";
+        cin >> respuesta;
+    } while (respuesta == 's' || respuesta == 'S');
+    mostrarResultados(compras, descuentos, contador, totalVentas, totalDescuentos);
+    return 0;
+}
